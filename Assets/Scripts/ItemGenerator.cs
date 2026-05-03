@@ -9,7 +9,14 @@ public class ItemGenerator : MonoBehaviour
     float span = 1.0f;
     float delta = 0;
     int ratio = 2;
+    float speed = -0.03f;
    
+    public void SetParameter(float span, int ratio, float speed)
+    {
+        this.span = span;
+        this.ratio = ratio;
+        this.speed = speed;
+    }
     void Update()
     {
         this.delta += Time.deltaTime;
@@ -30,6 +37,7 @@ public class ItemGenerator : MonoBehaviour
             float x = Random.Range(-1, 2);
             float z = Random.Range(-1, 2);
             item.transform.position = new Vector3(x, 4, z);
+            item.GetComponent<ItemController>().dropspeed = this.speed;
         }
     }
 }
